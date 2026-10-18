@@ -1,0 +1,104 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String           @id @default(cuid())
+  email           String           @unique
+  password        String
+  name            String
+  role            String           @default("customer") // "customer" | "admin" | "studio"
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  orders          Order[]
+  bookings        Booking[]
+  potteryRequests PotteryRequest[]
+}
+
+model Painting {
+  id          String   @id @default(cuid()) // e.g. "p-001" or cuid for custom studio additions
+  title       String
+  artist      String
+  description String
+  price       Int      // Stored in INR
+  imageUrl    String
+  status      String   @default("available") // "available" | "sold"
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  orders      Order[]
+}
+
+model Order {
+  id         String   @id @default(cuid())
+  userId     String
+  paintingId String
+  price      Int      // Exact price at the time of purchase
+  status     String   @default("placed") // "placed" | "cancelled"
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  painting   Painting @relation(fields: [paintingId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([paintingId])
+}
+
+model Booking {
+  id          String   @id @default(cuid())
+  userId      String
+  date        String   // Stored as ISO YYYY-MM-DD date-only string to avoid UTC/timezone skew
+  wallSize    Int      // 10 to 500 sq ft
+  ratePerSqFt Int      // 150 INR (from seed dataset)
+  totalPrice  Int      // wallSize * ratePerSqFt
+  address     String
+  status      String   @default("requested") // "requested" | "confirmed" | "declined" | "cancelled"
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([date])
+}
+
+model PotteryItem {
+  id       String           @id // e.g. "i-01"
+  name     String
+  requests PotteryRequest[]
+}
+
+model Glaze {
+  id       String           @id // e.g. "g-01"
+  name     String
+  requests PotteryRequest[]
+}
+
+model PotteryRequest {
+  id           String      @id @default(cuid())
+  userId       String
+  itemId       String
+  glazeId      String
+  quantity     Int         // 1 to 12
+  neededByDate String      // ISO YYYY-MM-DD date-only string (at least 14 days in future)
+  status       String      @default("requested") // "requested" | "accepted" | "declined" | "cancelled"
+  notes        String?
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  user         User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  item         PotteryItem @relation(fields: [itemId], references: [id])
+  glaze        Glaze       @relation(fields: [glazeId], references: [id])
+
+  @@index([userId])
+}
+
+model StudioSetting {
+  key   String @id
+  value String
+}
