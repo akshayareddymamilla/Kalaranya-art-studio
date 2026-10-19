@@ -4,7 +4,7 @@ dotenv.config();
 import { app } from './app';
 import { ensureDatabaseConstraints } from './lib/prisma';
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5050;
 
 async function bootstrap() {
   try {

@@ -18,7 +18,10 @@ import {
   Pencil,
   CheckCircle2,
   AlertCircle,
-  Plus
+  Plus,
+  Award,
+  Printer,
+  X
 } from 'lucide-react';
 
 export const CustomerDashboard: React.FC = () => {
@@ -47,6 +50,9 @@ export const CustomerDashboard: React.FC = () => {
   const [editPottery, setEditPottery] = useState<PotteryRequest | null>(null);
   const [editQuantity, setEditQuantity] = useState<number>(1);
   const [editNotes, setEditNotes] = useState<string>('');
+
+  // Certificate Modal State
+  const [selectedCertificateOrder, setSelectedCertificateOrder] = useState<Order | null>(null);
 
   const loadAllCustomerData = async () => {
     try {
@@ -309,19 +315,28 @@ export const CustomerDashboard: React.FC = () => {
                               </td>
                               <td className="px-6 py-4 text-right">
                                 {isPlaced ? (
-                                  <button
-                                    onClick={() =>
-                                      setCancelModal({
-                                        type: 'order',
-                                        id: order.id,
-                                        title: `Cancel order for "${order.painting?.title}"`,
-                                      })
-                                    }
-                                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-rose-200 text-xs font-medium text-rose-700 hover:bg-rose-50 transition-colors"
-                                  >
-                                    <Ban className="w-3.5 h-3.5" />
-                                    Cancel Order
-                                  </button>
+                                  <div className="flex items-center justify-end gap-2">
+                                    <button
+                                      onClick={() => setSelectedCertificateOrder(order)}
+                                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-amber-300 bg-amber-50/70 text-xs font-medium text-amber-900 hover:bg-amber-100 transition-colors shadow-sm"
+                                    >
+                                      <Award className="w-3.5 h-3.5 text-amber-700" />
+                                      Certificate
+                                    </button>
+                                    <button
+                                      onClick={() =>
+                                        setCancelModal({
+                                          type: 'order',
+                                          id: order.id,
+                                          title: `Cancel order for "${order.painting?.title}"`,
+                                        })
+                                      }
+                                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-rose-200 text-xs font-medium text-rose-700 hover:bg-rose-50 transition-colors"
+                                    >
+                                      <Ban className="w-3.5 h-3.5" />
+                                      Cancel Order
+                                    </button>
+                                  </div>
                                 ) : (
                                   <span className="text-xs text-studio-muted italic">Cancelled</span>
                                 )}
@@ -603,6 +618,136 @@ export const CustomerDashboard: React.FC = () => {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* Certificate of Authenticity Modal */}
+      {selectedCertificateOrder && (
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-stone-50 rounded-2xl max-w-2xl w-full p-8 shadow-2xl border-4 border-amber-900/20 relative animate-in fade-in zoom-in-95 duration-200">
+            <button
+              onClick={() => setSelectedCertificateOrder(null)}
+              className="absolute top-4 right-4 text-studio-muted hover:text-studio-charcoal p-1"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            {/* Certificate Document Border Box */}
+            <div className="border-2 border-amber-900/40 p-6 sm:p-8 bg-white relative">
+              {/* Corner Ornaments */}
+              <div className="absolute top-1 left-1 w-3 h-3 border-t-2 border-l-2 border-amber-900/60" />
+              <div className="absolute top-1 right-1 w-3 h-3 border-t-2 border-r-2 border-amber-900/60" />
+              <div className="absolute bottom-1 left-1 w-3 h-3 border-b-2 border-l-2 border-amber-900/60" />
+              <div className="absolute bottom-1 right-1 w-3 h-3 border-b-2 border-r-2 border-amber-900/60" />
+
+              {/* Certificate Header */}
+              <div className="text-center space-y-1 mb-6 border-b border-amber-900/20 pb-4">
+                <span className="text-[10px] uppercase tracking-[0.25em] text-studio-muted font-bold block">
+                  KALĀRANYA ART STUDIO & ATELIER
+                </span>
+                <h2 className="font-serif text-2xl sm:text-3xl font-bold text-amber-950 tracking-wider">
+                  CERTIFICATE OF AUTHENTICITY
+                </h2>
+                <p className="text-xs text-studio-muted italic">
+                  Permanent Registry of Original Contemporary & Heritage Works
+                </p>
+              </div>
+
+              {/* Certificate Body */}
+              <div className="space-y-4 text-xs sm:text-sm text-studio-charcoal leading-relaxed">
+                <p className="text-center text-studio-muted italic">
+                  This document officially certifies that the original artwork described herein is a genuine, one-of-a-kind handcrafted piece created by the designated artisan and preserved under studio archive records.
+                </p>
+
+                <div className="bg-studio-ivory/60 rounded-xl p-4 border border-studio-border/80 space-y-2 mt-4">
+                  <div className="grid grid-cols-3 gap-2">
+                    <span className="font-semibold text-studio-muted text-xs uppercase">Artwork Title:</span>
+                    <span className="col-span-2 font-serif font-bold text-base text-studio-charcoal">
+                      {selectedCertificateOrder.painting?.title}
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-3 gap-2">
+                    <span className="font-semibold text-studio-muted text-xs uppercase">Master Artist:</span>
+                    <span className="col-span-2 font-medium text-studio-charcoal">
+                      {selectedCertificateOrder.painting?.artist}
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-3 gap-2">
+                    <span className="font-semibold text-studio-muted text-xs uppercase">Curatorial Medium:</span>
+                    <span className="col-span-2 text-xs text-studio-muted">
+                      {selectedCertificateOrder.painting?.description}
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-3 gap-2">
+                    <span className="font-semibold text-studio-muted text-xs uppercase">Registered Patron:</span>
+                    <span className="col-span-2 font-medium text-studio-charcoal">
+                      {user?.name} ({user?.email})
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-3 gap-2">
+                    <span className="font-semibold text-studio-muted text-xs uppercase">Acquisition Value:</span>
+                    <span className="col-span-2 font-serif font-bold text-studio-terracotta">
+                      ₹{selectedCertificateOrder.price.toLocaleString('en-IN')}
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-3 gap-2">
+                    <span className="font-semibold text-studio-muted text-xs uppercase">Archive Registry ID:</span>
+                    <span className="col-span-2 font-mono text-[11px] text-studio-muted">
+                      {selectedCertificateOrder.id}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Signatures & Seal */}
+                <div className="flex items-end justify-between pt-6 border-t border-amber-900/20 mt-6">
+                  <div className="text-left space-y-1">
+                    <div className="w-24 border-b border-stone-400 mb-1" />
+                    <span className="text-[10px] uppercase font-bold text-studio-muted block">
+                      Curatorial Seal
+                    </span>
+                    <span className="text-[10px] text-stone-500">
+                      Date: {new Date(selectedCertificateOrder.createdAt).toLocaleDateString()}
+                    </span>
+                  </div>
+
+                  <div className="w-16 h-16 rounded-full border-2 border-dashed border-amber-800/40 flex items-center justify-center text-center p-1">
+                    <span className="text-[8px] font-bold uppercase tracking-tighter text-amber-900">
+                      STUDIO VERIFIED ORIGINAL
+                    </span>
+                  </div>
+
+                  <div className="text-right space-y-1">
+                    <div className="w-24 border-b border-stone-400 mb-1 ml-auto" />
+                    <span className="text-[10px] uppercase font-bold text-studio-muted block">
+                      Atelier Director
+                    </span>
+                    <span className="text-[10px] text-stone-500">
+                      Kalāranya Studio
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Actions Footer */}
+              <div className="flex items-center justify-end gap-3 pt-6 mt-4 border-t border-studio-border">
+                <button
+                  type="button"
+                  onClick={() => setSelectedCertificateOrder(null)}
+                  className="px-4 py-2 rounded-lg border border-studio-border text-xs font-medium text-studio-charcoal hover:bg-studio-ivory transition-colors"
+                >
+                  Close
+                </button>
+                <button
+                  type="button"
+                  onClick={() => window.print()}
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-studio-charcoal text-white text-xs font-medium hover:bg-black transition-colors shadow-sm"
+                >
+                  <Printer className="w-3.5 h-3.5" />
+                  Print / Save Certificate
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       )}

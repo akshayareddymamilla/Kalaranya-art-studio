@@ -180,8 +180,25 @@ export const WallBookingForm: React.FC = () => {
                   </p>
                 ) : (
                   <p className="text-xs text-studio-muted">
-                    Window: {minDate} to {maxDate} (7–90 days ahead)
+                    Booking Window: {minDate} to {maxDate} (7–90 days ahead)
                   </p>
+                )}
+                {occupiedDates.length > 0 && (
+                  <div className="pt-1.5">
+                    <span className="text-[11px] text-studio-muted font-medium block mb-1">
+                      Already Booked Dates (Unavailable):
+                    </span>
+                    <div className="flex flex-wrap gap-1.5 max-h-24 overflow-y-auto">
+                      {occupiedDates.map((d) => (
+                        <span
+                          key={d}
+                          className="px-2 py-0.5 rounded text-[10px] bg-rose-50 text-rose-700 border border-rose-200 line-through"
+                        >
+                          {d}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 )}
               </div>
 

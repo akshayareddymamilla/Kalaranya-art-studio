@@ -7,6 +7,7 @@ import { potteryService } from '../services/pottery.service';
 import { useAuth } from '../context/AuthContext';
 import { StatusBadge } from '../components/StatusBadge';
 import { LoadingState } from '../components/LoadingState';
+import { EmptyState } from '../components/EmptyState';
 import { ErrorState } from '../components/ErrorState';
 import {
   Palette,
@@ -352,9 +353,18 @@ export const AdminDashboard: React.FC = () => {
         <div>
           {/* TAB 1: PAINTINGS MANAGEMENT */}
           {activeTab === 'paintings' && (
-            <div className="bg-white rounded-2xl border border-studio-border overflow-hidden shadow-sm">
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-sm">
+            paintings.length === 0 ? (
+              <EmptyState
+                icon={Palette}
+                title="No Paintings in Catalogue"
+                description="The gallery collection currently has no artwork records. Click 'Add New Painting' to add original pieces."
+                actionText="Add First Painting"
+                onAction={() => setShowAddPainting(true)}
+              />
+            ) : (
+              <div className="bg-white rounded-2xl border border-studio-border overflow-hidden shadow-sm">
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-sm">
                   <thead className="bg-studio-ivory border-b border-studio-border text-xs uppercase text-studio-muted tracking-wider">
                     <tr>
                       <th className="px-6 py-4">Artwork</th>
@@ -423,13 +433,21 @@ export const AdminDashboard: React.FC = () => {
                 </table>
               </div>
             </div>
+            )
           )}
 
           {/* TAB 2: WALL BOOKINGS MANAGEMENT */}
           {activeTab === 'bookings' && (
-            <div className="bg-white rounded-2xl border border-studio-border overflow-hidden shadow-sm">
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-sm">
+            bookings.length === 0 ? (
+              <EmptyState
+                icon={Calendar}
+                title="No Wall Bookings Yet"
+                description="No customer wall mural bookings have been submitted to the studio atelier yet."
+              />
+            ) : (
+              <div className="bg-white rounded-2xl border border-studio-border overflow-hidden shadow-sm">
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-sm">
                   <thead className="bg-studio-ivory border-b border-studio-border text-xs uppercase text-studio-muted tracking-wider">
                     <tr>
                       <th className="px-6 py-4">Date</th>
@@ -495,13 +513,21 @@ export const AdminDashboard: React.FC = () => {
                 </table>
               </div>
             </div>
+            )
           )}
 
           {/* TAB 3: CUSTOM POTTERY MANAGEMENT */}
           {activeTab === 'pottery' && (
-            <div className="bg-white rounded-2xl border border-studio-border overflow-hidden shadow-sm">
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-sm">
+            potteryRequests.length === 0 ? (
+              <EmptyState
+                icon={Sparkles}
+                title="No Pottery Commissions Yet"
+                description="No customer custom pottery requests have been submitted to the studio atelier yet."
+              />
+            ) : (
+              <div className="bg-white rounded-2xl border border-studio-border overflow-hidden shadow-sm">
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-sm">
                   <thead className="bg-studio-ivory border-b border-studio-border text-xs uppercase text-studio-muted tracking-wider">
                     <tr>
                       <th className="px-6 py-4">Client</th>
@@ -570,6 +596,7 @@ export const AdminDashboard: React.FC = () => {
                 </table>
               </div>
             </div>
+            )
           )}
         </div>
       )}
