@@ -110,7 +110,7 @@ Clone the repository and run the automated setup command from the repository roo
 # 1. Install dependencies, generate Prisma client, push schema, and seed database
 npm run setup
 
-# 2. Start the backend server (runs on http://localhost:5000)
+# 2. Start the backend server (runs on http://localhost:5050)
 npm run dev:server
 
 # 3. In a separate terminal, start the frontend client (runs on http://localhost:5173)
