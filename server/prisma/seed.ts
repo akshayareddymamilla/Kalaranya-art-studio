@@ -79,24 +79,6 @@ async function main() {
   });
   console.log(`Studio admin account verified: ${admin.email} (role: ${admin.role})`);
 
-  // Also seed a default demo customer account for ease of testing/evaluator walkthrough
-  const demoCustomerPassword = await bcrypt.hash('Customer@123', 10);
-  const customer = await prisma.user.upsert({
-    where: { email: 'customer@example.com' },
-    update: {
-      password: demoCustomerPassword,
-      name: 'Priya Sharma',
-      role: 'customer'
-    },
-    create: {
-      email: 'customer@example.com',
-      password: demoCustomerPassword,
-      name: 'Priya Sharma',
-      role: 'customer'
-    }
-  });
-  console.log(`Demo customer account verified: ${customer.email} (password: Customer@123)`);
-
   // 3. Seed Mural Rate
   await prisma.studioSetting.upsert({
     where: { key: 'mural_rate_per_sq_ft' },

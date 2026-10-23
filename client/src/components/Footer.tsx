@@ -38,8 +38,8 @@ export const Footer: React.FC = () => {
             </h4>
             <div className="text-xs text-studio-muted space-y-2 bg-studio-ivory p-3.5 rounded-lg border border-studio-border">
               <p className="font-medium text-studio-charcoal">GDGC Volunteer Recruitment</p>
-              <p>Demo Studio: <span className="font-mono text-[11px]">studio@artstudio.in</span></p>
-              <p>Demo Customer: <span className="font-mono text-[11px]">customer@example.com</span></p>
+              <p>Studio Admin (Seed): <span className="font-mono text-[11px]">studio@artstudio.in</span></p>
+              <p>Patron Accounts: <span className="text-[11px]">Register via Sign-Up</span></p>
             </div>
           </div>
         </div>

@@ -121,16 +121,15 @@ Open your browser and navigate to: **`http://localhost:5173`**
 
 ---
 
-## 6. Pre-Seeded Accounts for Evaluation
+## 6. Official Seed Account
 
 The database is pre-seeded with the exact seed credentials from `seed.json`:
 
 | Role | Email | Password | Allowed Capabilities |
 |---|---|---|---|
 | **Studio Admin** | `studio@artstudio.in` | `Studio@123` | Add paintings, edit available paintings, confirm/decline wall bookings, accept/decline pottery commissions, view all studio records. |
-| **Demo Customer** | `customer@example.com` | `Customer@123` | Purchase paintings, book wall dates, request custom pottery, view own orders, cancel own bookings (subject to 3-day rule). |
 
-> **Evaluator Convenience**: On the **Sign In** screen (`/login`), click the one-click **"Studio Admin"** or **"Demo Patron"** quick-fill buttons to populate credentials instantly.
+> **Customer Accounts**: In strict accordance with the recruitment specification, customer accounts are not hardcoded in the seed dataset; customers register dynamically via the storefront **[Register](/register)** form, proving that password hashing, validation, and session generation function from a clean state.
 
 ---
 

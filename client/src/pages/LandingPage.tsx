@@ -72,7 +72,7 @@ export const LandingPage: React.FC = () => {
                 <div className="inline-flex items-center gap-3 p-3 rounded-lg bg-amber-50/80 border border-amber-200/80 text-xs text-amber-900">
                   <ShieldCheck className="w-4 h-4 text-amber-700 shrink-0" />
                   <span>
-                    <strong>Recruitment Demo:</strong> Studio Admin (<span className="font-mono">studio@artstudio.in</span> / <span className="font-mono">Studio@123</span>) or Customer (<span className="font-mono">customer@example.com</span> / <span className="font-mono">Customer@123</span>).
+                    <strong>Studio Administration (Seed Account):</strong> <span className="font-mono">studio@artstudio.in</span> / <span className="font-mono">Studio@123</span>. Patrons register dynamically via storefront Sign-Up.
                   </span>
                 </div>
               </div>

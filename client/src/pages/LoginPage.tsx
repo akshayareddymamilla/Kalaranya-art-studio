@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Palette, ShieldCheck, UserCheck, AlertCircle } from 'lucide-react';
+import { Palette, ShieldCheck, AlertCircle } from 'lucide-react';
 
 export const LoginPage: React.FC = () => {
   const { login } = useAuth();
@@ -104,37 +104,22 @@ export const LoginPage: React.FC = () => {
           </button>
         </form>
 
-        {/* Quick Demo Credentials Box for Evaluator */}
+        {/* Studio Admin Seed Account Helper */}
         <div className="pt-4 border-t border-studio-border/70 space-y-2">
-          <span className="text-[11px] font-semibold uppercase tracking-wider text-studio-muted block text-center">
-            Quick Fill Demo Accounts (Click to Apply)
-          </span>
-
-          <div className="grid grid-cols-2 gap-2">
-            <button
-              type="button"
-              onClick={() => handleFillDemo('studio@artstudio.in', 'Studio@123')}
-              className="p-2.5 rounded-lg border border-amber-200 bg-amber-50/70 hover:bg-amber-100/70 transition-colors text-left flex items-start gap-2 text-amber-900"
-            >
-              <ShieldCheck className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
+          <button
+            type="button"
+            onClick={() => handleFillDemo('studio@artstudio.in', 'Studio@123')}
+            className="w-full p-2.5 rounded-lg border border-amber-200 bg-amber-50/70 hover:bg-amber-100/70 transition-colors text-left flex items-center justify-between text-amber-900"
+          >
+            <div className="flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-amber-700 shrink-0" />
               <div>
-                <span className="text-xs font-bold block leading-none">Studio Admin</span>
+                <span className="text-xs font-bold block leading-none">Studio Administrator (Seed Account)</span>
                 <span className="text-[10px] text-amber-800">studio@artstudio.in</span>
               </div>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => handleFillDemo('customer@example.com', 'Customer@123')}
-              className="p-2.5 rounded-lg border border-blue-200 bg-blue-50/70 hover:bg-blue-100/70 transition-colors text-left flex items-start gap-2 text-blue-900"
-            >
-              <UserCheck className="w-4 h-4 text-blue-700 shrink-0 mt-0.5" />
-              <div>
-                <span className="text-xs font-bold block leading-none">Demo Patron</span>
-                <span className="text-[10px] text-blue-800">customer@example.com</span>
-              </div>
-            </button>
-          </div>
+            </div>
+            <span className="text-[10px] uppercase font-semibold text-amber-800">Fill Credentials</span>
+          </button>
         </div>
 
         <div className="text-center pt-2 text-xs text-studio-muted">

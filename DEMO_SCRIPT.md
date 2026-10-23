@@ -15,17 +15,17 @@ This script is structured to stay strictly within the **5-minute limit** require
 
 ---
 
-### 2. Customer Journey: Sign In & Buying a Painting (0:41 – 1:35)
-- **Screen:** Click **"Sign In"** in the top navigation bar.
+### 2. Customer Journey: Sign-Up & Buying a Painting (0:41 – 1:35)
+- **Screen:** Click **"Register"** in the top navigation bar (`/register`).
 - **Action:**
-  1. Click the **"Demo Patron"** 1-click quick-fill button (`customer@example.com` / `Customer@123`).
-  2. Click **"Sign In"**. Show the customer navigation bar appear with "My Dashboard".
-  3. Click **"Explore Paintings"** (or **"Paintings"** in the navbar).
+  1. Fill in name: `Arjun Verma`, email: `arjun@example.com`, password: `Password@123`.
+  2. Click **"Register Account"**. Show immediate successful registration and automatic sign-in leading to the customer workspace.
+  3. Click **"Paintings"** in the navigation bar.
   4. Point out an available painting (e.g. *Madhubani Peacock Garden* or *Warli Village Scene*).
   5. Click **"Buy"** -> Confirm the purchase in the modal dialog.
   6. Show the green success notification banner and the status badge immediately flipping from *Available* to *Sold*.
 - **What to say:**
-  > *"I will log in as a customer using our pre-seeded patron account. Now browsing the painting catalogue, each painting here is one-of-a-kind and can only be bought once. I'll acquire this available piece. When I confirm, an order is placed on the backend, and the painting is atomically marked as sold so no other user can purchase it concurrently."*
+  > *"To show customer onboarding as required by the brief, I will register a new customer account. The backend validates the inputs, hashes the password using bcrypt, and issues an authenticated session. Now browsing the gallery catalogue, each painting here is one-of-a-kind and can be bought only once. I'll acquire this available piece. When I confirm, an order is placed on the backend, and the painting is atomically marked as sold so no other user can purchase it concurrently."*
 
 ---
 
