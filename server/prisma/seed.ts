@@ -107,7 +107,18 @@ async function main() {
   }
   console.log(`Seeded ${seedData.glazes.length} glazes.`);
 
-  // 6. Seed Paintings
+  // 6. Clean rogue/extraneous test paintings and Seed Official Paintings
+  const seedPaintingIds = seedData.paintings.map(p => p.id);
+  const deletedRogue = await prisma.painting.deleteMany({
+    where: {
+      id: { notIn: seedPaintingIds },
+      orders: { none: {} }
+    }
+  });
+  if (deletedRogue.count > 0) {
+    console.log(`Cleaned ${deletedRogue.count} non-seed test paintings.`);
+  }
+
   for (const painting of seedData.paintings) {
     await prisma.painting.upsert({
       where: { id: painting.id },

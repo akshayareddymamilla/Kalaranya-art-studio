@@ -131,6 +131,7 @@ describe('1. Authentication & RBAC', () => {
 
 describe('2. Paintings & Concurrency Protection', () => {
   let testPaintingId: string;
+  let concurrentPaintingId: string;
 
   beforeAll(async () => {
     const p = await prisma.painting.create({
@@ -144,6 +145,14 @@ describe('2. Paintings & Concurrency Protection', () => {
       },
     });
     testPaintingId = p.id;
+  });
+
+  afterAll(async () => {
+    const ids = [testPaintingId, concurrentPaintingId].filter(Boolean);
+    if (ids.length > 0) {
+      await prisma.order.deleteMany({ where: { paintingId: { in: ids } } });
+      await prisma.painting.deleteMany({ where: { id: { in: ids } } });
+    }
   });
 
   it('customer can purchase an available painting', async () => {
@@ -177,6 +186,7 @@ describe('2. Paintings & Concurrency Protection', () => {
         status: 'available',
       },
     });
+    concurrentPaintingId = concurrentPainting.id;
 
     const [resA, resB] = await Promise.all([
       request(app)
