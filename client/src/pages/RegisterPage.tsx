@@ -23,7 +23,7 @@ export const RegisterPage: React.FC = () => {
       setLoading(true);
       setError(null);
       await register({ name, email, password });
-      navigate('/customer');
+      navigate('/paintings');
     } catch (err: any) {
       setError(err.message || 'Registration failed. Email may already be registered.');
     } finally {

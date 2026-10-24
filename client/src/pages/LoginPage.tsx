@@ -28,7 +28,7 @@ export const LoginPage: React.FC = () => {
       } else if (user.role === 'admin' || user.role === 'studio') {
         navigate('/admin');
       } else {
-        navigate('/customer');
+        navigate('/paintings');
       }
     } catch (err: any) {
       setError(err.message || 'Invalid email or password.');
