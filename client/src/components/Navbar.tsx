@@ -25,13 +25,13 @@ export const Navbar: React.FC = () => {
   return (
     <header className="sticky top-0 z-40">
       {/* Top Announcement Marquee Bar */}
-      <div className="bg-[#191715] text-stone-300 border-b border-stone-800/80 overflow-hidden py-1.5 select-none shadow-inner">
-        <div className="animate-marquee whitespace-nowrap text-[10.5px] font-medium tracking-widest uppercase text-stone-200">
+      <div className="bg-[#8A381A] text-amber-50 border-b border-[#732E14] overflow-hidden py-1.5 select-none shadow-sm">
+        <div className="animate-marquee whitespace-nowrap text-[10.5px] font-medium tracking-widest uppercase text-amber-50/95">
           {[0, 1].map((copyIndex) => (
             <div key={copyIndex} className="flex items-center shrink-0">
               {TICKER_ITEMS.map((item, idx) => (
                 <span key={idx} className="flex items-center">
-                  <span className="text-amber-400 mx-3.5 text-xs leading-none">•</span>
+                  <span className="text-amber-300 mx-3.5 text-xs leading-none">•</span>
                   <span>{item}</span>
                 </span>
               ))}
