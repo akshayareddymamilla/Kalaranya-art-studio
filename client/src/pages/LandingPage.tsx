@@ -5,6 +5,7 @@ import { paintingService } from '../services/painting.service';
 import { StatusBadge } from '../components/StatusBadge';
 import { LoadingState } from '../components/LoadingState';
 import { ErrorState } from '../components/ErrorState';
+import { HeroCarousel } from '../components/HeroCarousel';
 import { ArrowRight, Palette, Calendar, Sparkles } from 'lucide-react';
 
 export const LandingPage: React.FC = () => {
@@ -29,71 +30,15 @@ export const LandingPage: React.FC = () => {
 
   return (
     <div className="space-y-16 pb-16">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden pt-4 md:pt-6">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            <div className="lg:col-span-7 space-y-5">
-              <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-studio-sand border border-studio-border text-xs font-medium tracking-wide text-studio-charcoal">
-                <span className="w-2 h-2 rounded-full bg-studio-terracotta animate-pulse" />
-                Original Contemporary Indian Art Atelier
-              </div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-light text-studio-charcoal leading-[1.08] tracking-tight">
-                Timeless art forms <span className="italic font-normal text-studio-terracotta">handcrafted</span> for the mindful sanctuary.
-              </h1>
-              <p className="text-base sm:text-lg lg:text-xl text-studio-muted leading-relaxed max-w-xl font-light">
-                Kalāranya Studio unites traditional heritage with contemporary living. Each painting is one-of-a-kind, each wall mural architectural, and every custom pottery piece individually thrown and glazed.
-              </p>
-
-              <div className="flex flex-wrap items-center gap-3.5 pt-1">
-                <Link
-                  to="/paintings"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-studio-terracotta text-white font-medium hover:bg-studio-terracotta-hover transition-colors shadow-sm text-sm"
-                >
-                  Explore Paintings
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link
-                  to="/book-wall"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white border border-studio-border text-studio-charcoal font-medium hover:bg-studio-sand transition-colors shadow-sm text-sm"
-                >
-                  Book Wall Mural
-                </Link>
-                <Link
-                  to="/custom-pottery"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white border border-studio-border text-studio-charcoal font-medium hover:bg-studio-sand transition-colors shadow-sm text-sm"
-                >
-                  Custom Pottery
-                </Link>
-              </div>
-            </div>
-
-            <div className="lg:col-span-5">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-studio-sand aspect-[4/5]">
-                <img
-                  src="/images/p-001.jpg"
-                  alt="Madhubani Peacock Garden"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex flex-col justify-end p-6 text-white">
-                  <span className="text-xs uppercase tracking-wider text-amber-300 font-medium">
-                    Featured Masterpiece
-                  </span>
-                  <h3 className="font-serif text-xl font-bold">Madhubani Peacock Garden</h3>
-                  <p className="text-xs text-stone-200 mt-1">Meera Kumari • Natural pigments on handmade paper</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Immersive In-Situ Hero Showcase */}
+      <HeroCarousel />
 
       {/* The 3 Studio Pillars */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="border-t border-studio-border pt-16">
+        <div>
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-3xl font-serif font-bold text-studio-charcoal">Three Disciplines, One Studio</h2>
-            <p className="text-sm text-studio-muted mt-2">
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-studio-charcoal">Three Disciplines, One Studio</h2>
+            <p className="text-sm sm:text-base text-studio-muted mt-2 font-light">
               Every creation is governed by strict craftsmanship, transparent pricing, and authenticity guarantees.
             </p>
           </div>
