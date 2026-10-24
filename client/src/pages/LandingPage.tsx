@@ -28,9 +28,9 @@ export const LandingPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="space-y-20 pb-20">
+    <div className="space-y-16 pb-20">
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-12 md:pt-20">
+      <section className="relative overflow-hidden pt-6 md:pt-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7 space-y-7">

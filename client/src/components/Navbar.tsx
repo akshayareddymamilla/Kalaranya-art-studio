@@ -25,6 +25,28 @@ export const Navbar: React.FC = () => {
             />
           </Link>
 
+          {/* Refined Atelier Navigation */}
+          <nav className="hidden md:flex items-center gap-10 text-[13px] tracking-wider uppercase font-medium text-studio-charcoal/80">
+            <Link
+              to="/paintings"
+              className="hover:text-studio-terracotta transition-colors duration-200"
+            >
+              Paintings
+            </Link>
+            <Link
+              to="/book-wall"
+              className="hover:text-studio-terracotta transition-colors duration-200"
+            >
+              Wall Murals
+            </Link>
+            <Link
+              to="/custom-pottery"
+              className="hover:text-studio-terracotta transition-colors duration-200"
+            >
+              Custom Pottery
+            </Link>
+          </nav>
+
           {/* User / Auth State */}
           <div className="flex items-center gap-4">
             {isAuthenticated && user ? (
