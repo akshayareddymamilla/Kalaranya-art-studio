@@ -6,7 +6,6 @@ import { StatusBadge } from '../components/StatusBadge';
 import { LoadingState } from '../components/LoadingState';
 import { ErrorState } from '../components/ErrorState';
 import { TopHero } from '../components/TopHero';
-import { HeroCarousel } from '../components/HeroCarousel';
 import { ArrowRight, Palette, Calendar, Sparkles } from 'lucide-react';
 
 export const LandingPage: React.FC = () => {
@@ -33,9 +32,6 @@ export const LandingPage: React.FC = () => {
     <div className="space-y-16 pb-16">
       {/* Editorial In-Situ Top Hero (Matching Reference Design) */}
       <TopHero />
-
-      {/* Curated Gallery Wall Exhibition (Seed Data Paintings) */}
-      <HeroCarousel />
 
       {/* The 3 Studio Pillars */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
