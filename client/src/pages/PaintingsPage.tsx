@@ -8,7 +8,7 @@ import { LoadingState } from '../components/LoadingState';
 import { EmptyState } from '../components/EmptyState';
 import { ErrorState } from '../components/ErrorState';
 import { ConfirmModal } from '../components/ConfirmModal';
-import { Search, SlidersHorizontal, CheckCircle2, AlertCircle } from 'lucide-react';
+import { Search, SlidersHorizontal, CheckCircle2, AlertCircle, ArrowLeft } from 'lucide-react';
 
 export const PaintingsPage: React.FC = () => {
   const { isAuthenticated, isStudioAdmin } = useAuth();
@@ -111,7 +111,18 @@ export const PaintingsPage: React.FC = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+      {/* Navigation Breadcrumb */}
+      <div>
+        <Link
+          to="/"
+          className="inline-flex items-center gap-2 text-xs font-medium text-studio-muted hover:text-studio-terracotta transition-colors py-1.5 px-3 rounded-lg bg-white border border-studio-border shadow-sm hover:border-studio-terracotta/40"
+        >
+          <ArrowLeft className="w-3.5 h-3.5" />
+          <span>Back to Home / Atelier</span>
+        </Link>
+      </div>
+
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-studio-border pb-6">
         <div>

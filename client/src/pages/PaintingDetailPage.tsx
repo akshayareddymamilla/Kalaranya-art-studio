@@ -108,15 +108,23 @@ export const PaintingDetailPage: React.FC = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
-      {/* Back button */}
-      <div>
+      {/* Back button & Breadcrumb */}
+      <div className="flex items-center justify-between gap-4">
         <Link
           to="/paintings"
-          className="inline-flex items-center gap-2 text-xs font-semibold text-studio-muted hover:text-studio-charcoal transition-colors"
+          className="inline-flex items-center gap-2 text-xs font-semibold text-studio-muted hover:text-studio-charcoal transition-colors py-1.5 px-3 rounded-lg bg-white border border-studio-border shadow-sm hover:border-studio-terracotta/40"
         >
-          <ArrowLeft className="w-4 h-4" />
-          Back to Catalogue
+          <ArrowLeft className="w-3.5 h-3.5" />
+          <span>Back to Catalogue</span>
         </Link>
+
+        <div className="hidden sm:flex items-center gap-2 text-xs text-studio-muted">
+          <Link to="/" className="hover:text-studio-terracotta transition-colors">Home</Link>
+          <span>/</span>
+          <Link to="/paintings" className="hover:text-studio-terracotta transition-colors">Catalogue</Link>
+          <span>/</span>
+          <span className="text-studio-charcoal font-medium truncate max-w-[200px]">{painting.title}</span>
+        </div>
       </div>
 
       {/* Feedback banner */}

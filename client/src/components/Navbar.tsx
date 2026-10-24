@@ -53,6 +53,34 @@ export const Navbar: React.FC = () => {
             />
           </Link>
 
+          {/* Center Navigation Links */}
+          <nav className="hidden md:flex items-center gap-7 text-xs tracking-wider uppercase font-medium text-studio-charcoal">
+            <Link
+              to="/"
+              className="hover:text-studio-terracotta transition-colors py-1"
+            >
+              Home
+            </Link>
+            <Link
+              to="/paintings"
+              className="hover:text-studio-terracotta transition-colors py-1"
+            >
+              Paintings
+            </Link>
+            <Link
+              to="/book-wall"
+              className="hover:text-studio-terracotta transition-colors py-1"
+            >
+              Wall Murals
+            </Link>
+            <Link
+              to="/custom-pottery"
+              className="hover:text-studio-terracotta transition-colors py-1"
+            >
+              Custom Pottery
+            </Link>
+          </nav>
+
           {/* User / Auth State */}
           <div className="flex items-center gap-4">
             {isAuthenticated && user ? (

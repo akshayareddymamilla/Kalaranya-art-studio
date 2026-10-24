@@ -4,7 +4,7 @@ import { potteryService } from '../services/pottery.service';
 import { PotteryItem, Glaze } from '../types';
 import { useAuth } from '../context/AuthContext';
 import { LoadingState } from '../components/LoadingState';
-import { Sparkles, Calendar, Hash, FileText, CheckCircle2, AlertCircle } from 'lucide-react';
+import { Sparkles, Calendar, Hash, FileText, CheckCircle2, AlertCircle, ArrowLeft } from 'lucide-react';
 
 export const PotteryRequestForm: React.FC = () => {
   const { isAuthenticated, isStudioAdmin } = useAuth();
@@ -94,7 +94,18 @@ export const PotteryRequestForm: React.FC = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+      {/* Navigation Breadcrumb */}
+      <div>
+        <Link
+          to="/"
+          className="inline-flex items-center gap-2 text-xs font-medium text-studio-muted hover:text-studio-terracotta transition-colors py-1.5 px-3 rounded-lg bg-white border border-studio-border shadow-sm hover:border-studio-terracotta/40"
+        >
+          <ArrowLeft className="w-3.5 h-3.5" />
+          <span>Back to Home / Atelier</span>
+        </Link>
+      </div>
+
       {/* Header */}
       <div className="border-b border-studio-border pb-6">
         <span className="text-xs font-semibold uppercase tracking-wider text-studio-terracotta block">
