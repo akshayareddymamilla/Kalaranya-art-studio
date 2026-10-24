@@ -4,7 +4,7 @@
 
 Authentication is powered by bcrypt-hashed passwords and JSON Web Tokens (JWT) verified on every protected HTTP request via middleware. When a user logs in (`POST /api/auth/login`), the server issues a signed JWT containing their user ID, email, name, and role (`customer` or `studio`/`admin`). This token is returned in the response body for bearer authorization headers and also set as a secure `HttpOnly` cookie. 
 
-Authorization is enforced entirely on the server through two middlewares: `authenticate` (which rejects unauthenticated requests with `401 Unauthorized`) and `requireRole` (which rejects unauthorized access with `403 Forbidden`, such as customers attempting to add paintings or admins attempting to purchase items). For owner-scoped resources (orders, bookings, pottery requests), customer queries are strictly scoped using `where: { userId: req.user.id }`. In strict accordance with the recruitment specification, if a customer attempts to access, edit, or cancel a record belonging to another customer, the server responds with `404 Not Found`.
+Authorization is enforced entirely on the server through two middlewares: `authenticate` (which rejects unauthenticated requests with `401 Unauthorized`) and `requireRole` (which rejects unauthorized access with `403 Forbidden`, such as customers attempting to add paintings or admins attempting to purchase items). For owner-scoped resources (orders, bookings, pottery requests), customer queries are strictly scoped using `where: { userId: req.user.id }`. In strict accordance with security and isolation specifications, if a customer attempts to access, edit, or cancel a record belonging to another customer, the server responds with `404 Not Found`.
 
 ---
 
@@ -12,7 +12,7 @@ Authorization is enforced entirely on the server through two middlewares: `authe
 
 We chose **SQLite** managed via **Prisma ORM**. 
 
-We selected SQLite because the recruitment brief explicitly states: *"Database: Your choice. A small app that works beats a large one that breaks."* SQLite allows zero-dependency, turnkey execution on any evaluator's clean machine without requiring Docker containers, external PostgreSQL service credentials, network latency, or database daemon configurations. At the same time, SQLite provides full ACID transactions, relational foreign keys, cascade deletes, and native support for partial unique indexes (`CREATE UNIQUE INDEX ... WHERE status IN (...)`). This gives us enterprise-grade relational integrity with zero friction. Switching to PostgreSQL in production would simply involve changing `provider = "postgresql"` in `prisma/schema.prisma` without rewriting application code.
+We selected SQLite because a reliable, self-contained system with zero setup friction delivers superior robustness. SQLite allows zero-dependency, turnkey execution on any clean machine without requiring Docker containers, external database cluster credentials, network latency, or database daemon configurations. At the same time, SQLite provides full ACID transactions, relational foreign keys, cascade deletes, and native support for partial unique indexes (`CREATE UNIQUE INDEX ... WHERE status IN (...)`). This gives us enterprise-grade relational integrity with zero operational overhead. Switching to PostgreSQL in production would simply involve changing `provider = "postgresql"` in `prisma/schema.prisma` without rewriting application code.
 
 ---
 
@@ -57,7 +57,7 @@ We enforce concurrency safety at two layers: **atomic conditional database updat
 - **Frontend Experience**: Editorial, contemporary art studio aesthetic with dedicated customer and admin dashboards, loading states, empty states, error cards, confirmation dialogs, and conflict banners.
 - **Verification**: Complete automated test suite with 21 passing Vitest + Supertest integration tests.
 
-### What Was Deliberately Left Out (Brief Scope Exclusions):
+### What Was Deliberately Kept Out of Scope:
 - Real payment gateway integrations (Razorpay/Stripe); orders are placed directly without third-party payments.
 - Password reset, email verification, social OAuth logins, and public admin registration.
 - SMS and email notification services.

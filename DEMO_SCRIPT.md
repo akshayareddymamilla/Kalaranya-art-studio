@@ -1,7 +1,7 @@
 # 5-Minute Demo Video Script & Walkthrough Guide
-## GDGC Web Development Volunteer Recruitment Evaluation
+## Full-Stack Feature Walkthrough & System Architecture
 
-This script is structured to stay strictly within the **5-minute limit** required by Section 05 of the recruitment brief. Use your own voice, record your screen, upload the video to **Google Drive**, and set access to **"Anyone with the link can view"**.
+This script is structured to deliver a concise **5-minute walkthrough** of the entire application. Use your own voice, record your screen, and showcase all core flows smoothly.
 
 ---
 
@@ -11,7 +11,7 @@ This script is structured to stay strictly within the **5-minute limit** require
 - **Screen:** Open the home page at [`http://localhost:5173`](http://localhost:5173).
 - **Action:** Scroll smoothly past the hero section, highlighting the 3 core disciplines (Original Paintings, Architectural Murals, Custom Pottery).
 - **What to say:**
-  > *"Hello! I'm presenting the Kalāranya Art Studio application built for the GDGC Web Development Volunteer Recruitment challenge. The studio fulfills three distinct business offerings: selling one-of-a-kind fine art paintings, booking architectural wall murals, and commissioning custom glazed pottery. It implements two distinct roles: Customer and Studio Admin, with complete server-side role-based access control, database concurrency protection, and the exact provided seed dataset."*
+  > *"Hello! I'm presenting the Kalāranya Art Studio application. The studio fulfills three distinct business offerings: selling one-of-a-kind fine art paintings, booking architectural wall murals, and commissioning custom glazed pottery. It implements two distinct roles: Customer and Studio Admin, with complete server-side role-based access control, database concurrency protection, and an authentic heritage seed dataset."*
 
 ---
 
@@ -25,7 +25,7 @@ This script is structured to stay strictly within the **5-minute limit** require
   5. Click **"Buy"** -> Confirm the purchase in the modal dialog.
   6. Show the green success notification banner and the status badge immediately flipping from *Available* to *Sold*.
 - **What to say:**
-  > *"To show customer onboarding as required by the brief, I will register a new customer account. The backend validates the inputs, hashes the password using bcrypt, and issues an authenticated session. Now browsing the gallery catalogue, each painting here is one-of-a-kind and can be bought only once. I'll acquire this available piece. When I confirm, an order is placed on the backend, and the painting is atomically marked as sold so no other user can purchase it concurrently."*
+  > *"To show customer onboarding, I will register a new customer account. The backend validates the inputs, hashes the password using bcrypt, and issues an authenticated session. Now browsing the gallery catalogue, each painting here is one-of-a-kind and can be bought only once. I'll acquire this available piece. When I confirm, an order is placed on the backend, and the painting is atomically marked as sold so no other user can purchase it concurrently."*
 
 ---
 
@@ -37,7 +37,7 @@ This script is structured to stay strictly within the **5-minute limit** require
   3. Click **"Cancel Order"** -> Confirm cancellation in the modal.
   4. Navigate back to **"Paintings"** to show that the painting has returned to *Available* in the gallery.
 - **What to say:**
-  > *"In the customer dashboard under 'My Orders', I can see my active acquisition. Here I can view its verified Certificate of Authenticity. To demonstrate the business rule from the brief: if I cancel this order, the backend transaction cancels the order record and atomically restores the painting's availability in the gallery catalogue."*
+  > *"In the customer dashboard under 'My Orders', I can see my active acquisition. Here I can view its verified Certificate of Authenticity. To demonstrate the business logic: if I cancel this order, the backend transaction cancels the order record and atomically restores the painting's availability in the gallery catalogue."*
 
 ---
 
@@ -86,7 +86,7 @@ This script is structured to stay strictly within the **5-minute limit** require
 - **File to show:** [`server/src/services/painting.service.ts`](file:///d:/Random/art-studio/server/src/services/painting.service.ts) (Lines 61–95) and [`server/src/lib/prisma.ts`](file:///d:/Random/art-studio/server/src/lib/prisma.ts) (Lines 10–25).
 - **Action:** Scroll to `purchasePainting` and point to the atomic conditional update and the partial unique index.
 - **What to say:**
-  > *"Finally, here is the backend implementation in TypeScript and Prisma. To stop two people from taking the same painting concurrently, we execute an atomic conditional update where status must equal 'available'. If two concurrent buyers hit the endpoint simultaneously, only one transaction updates the row; the other receives zero modified rows and is aborted with a 409 Conflict. On top of that, we enforce a database-level partial unique index so two active orders can never exist physically. All 21 integration tests pass cleanly. Thank you for your time and evaluation!"*
+  > *"Finally, here is the backend implementation in TypeScript and Prisma. To stop two people from taking the same painting concurrently, we execute an atomic conditional update where status must equal 'available'. If two concurrent buyers hit the endpoint simultaneously, only one transaction updates the row; the other receives zero modified rows and is aborted with a 409 Conflict. On top of that, we enforce a database-level partial unique index so two active orders can never exist physically. All 21 integration tests pass cleanly. Thank you for your time and walkthrough!"*
 
 ---
 

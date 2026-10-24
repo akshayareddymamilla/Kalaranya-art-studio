@@ -137,7 +137,7 @@ export class PaintingService {
         throw new NotFoundError('Order not found.');
       }
 
-      // Brief requirement: customer asking for someone else's record gets 404
+      // Customer privacy requirement: asking for someone else's record gets 404
       if (order.userId !== customerId) {
         throw new NotFoundError('Order not found.');
       }

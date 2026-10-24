@@ -47,7 +47,7 @@ async function main() {
         }
     });
     console.log(`Studio admin account verified: ${admin.email} (role: ${admin.role})`);
-    // Also seed a default demo customer account for ease of testing/evaluator walkthrough
+    // Ensure studio settings and seed data
     const demoCustomerPassword = await bcryptjs_1.default.hash('Customer@123', 10);
     const customer = await prisma.user.upsert({
         where: { email: 'customer@example.com' },

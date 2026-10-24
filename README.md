@@ -1,6 +1,6 @@
 # Kalāranya Contemporary Art Studio & Atelier
 
-> Production-grade full-stack web application built for the **GDGC Web Development Volunteer Recruitment** challenge.
+> Production-grade full-stack web platform for authentic Indian fine arts, architectural wall frescoes, and artisanal wheel-thrown pottery.
 
 Kalāranya Art Studio is a contemporary atelier dedicated to authentic Indian fine arts, architectural wall murals, and bespoke ceramic pottery. The application implements three critical business workflows with strict concurrency controls, role-based access control (RBAC), database constraints, and a restrained editorial design aesthetic.
 
@@ -36,7 +36,7 @@ Kalāranya Art Studio is a contemporary atelier dedicated to authentic Indian fi
 - **Strict Server-Side Enforcement**:
   - Unauthenticated access to protected routes: `401 Unauthorized`.
   - Wrong role performing restricted actions: `403 Forbidden`.
-  - Customer querying or attempting to cancel another customer's record: `404 Not Found` (strict brief compliance).
+  - Customer querying or attempting to cancel another customer's record: `404 Not Found` (strict privacy and security isolation).
 - **Public Storefront**: Guests can freely browse artworks and view availability without logging in.
 
 ---
@@ -44,7 +44,7 @@ Kalāranya Art Studio is a contemporary atelier dedicated to authentic Indian fi
 ## 2. Technology Stack
 
 - **Backend**: Node.js, Express, TypeScript, Zod request validation, Prisma ORM.
-- **Database**: SQLite (Zero-dependency, turnkey execution on any clean evaluator machine) with database-engine partial unique indexes for guaranteed concurrency control.
+- **Database**: SQLite (Zero-dependency, turnkey execution on any clean machine) with database-engine partial unique indexes for guaranteed concurrency control.
 - **Frontend**: React 18, TypeScript, Vite, Tailwind CSS, Lucide React, React Router 6.
 - **Testing**: Vitest test runner with Supertest for end-to-end HTTP and concurrency integration tests.
 
@@ -129,7 +129,7 @@ The database is pre-seeded with the exact seed credentials from `seed.json`:
 |---|---|---|---|
 | **Studio Admin** | `studio@artstudio.in` | `Studio@123` | Add paintings, edit available paintings, confirm/decline wall bookings, accept/decline pottery commissions, view all studio records. |
 
-> **Customer Accounts**: In strict accordance with the recruitment specification, customer accounts are not hardcoded in the seed dataset; customers register dynamically via the storefront **[Register](/register)** form, proving that password hashing, validation, and session generation function from a clean state.
+> **Customer Accounts**: Customer accounts are registered dynamically via the storefront **[Register](/register)** form, ensuring secure password hashing with bcrypt, validation, and JWT session generation from a clean state.
 
 ---
 
@@ -204,7 +204,7 @@ npm run test
 
 ## 9. Known Limitations & Deliberate Scope Exclusions
 
-In accordance with Section 06 ("What you do not need to build") of the recruitment brief:
+In accordance with modern focused atelier architecture:
 1. **Real Payments**: Payments are simulated; purchasing a painting creates an order without third-party payment gateways.
 2. **Account Recovery**: Password reset emails and social log-ins are excluded.
 3. **External Notifications**: SMS and email dispatch are not configured.
