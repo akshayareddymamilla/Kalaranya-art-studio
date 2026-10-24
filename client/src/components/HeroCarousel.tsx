@@ -148,6 +148,74 @@ const EXHIBITION_SLIDES: ExhibitionSlide[] = [
         status: 'available'
       }
     ]
+  },
+  {
+    id: 4,
+    badge: 'Royal Atelier Traditions • Mineral Pigments & Gold Leaf',
+    title: 'Sacred devotional sanctuaries & intricate',
+    accent: 'miniature paintings',
+    subtitle:
+      'Exquisite Pichwai lotus pond sanctuaries from Nathdwara alongside royal Rajasthani court miniatures, rendered with natural minerals and pure gold leaf.',
+    primaryCtaText: 'Explore Royal Art',
+    primaryCtaLink: '/paintings',
+    secondaryCtaText: 'Book Wall Mural',
+    secondaryCtaLink: '/book-wall',
+    artworks: [
+      {
+        id: 'p-009',
+        title: 'Pichwai Lotus Pond',
+        artist: 'Gopal Sharma',
+        style: 'Sacred Pichwai Gold',
+        price: 18000,
+        imageUrl: '/images/p-009.jpg',
+        dimensions: '60 x 90 cm',
+        status: 'sold'
+      },
+      {
+        id: 'p-008',
+        title: 'Rajasthani Miniature: Courtyard at Dusk',
+        artist: 'Kishan Singh Rathore',
+        style: 'Court Miniature',
+        price: 15500,
+        imageUrl: '/images/p-008.jpg',
+        dimensions: '30 x 40 cm',
+        status: 'available'
+      }
+    ]
+  },
+  {
+    id: 5,
+    badge: 'Deccan Heritage Scrolls & Ornate Woodcraft',
+    title: 'Centuries-old visual storytelling & lacquered',
+    accent: 'wooden panel craft',
+    subtitle:
+      'Vibrant Cheriyal mythological narrative scrolls and gold-toned Nirmal court woodwork preserved through hereditary artisan guilds across the Deccan plateau.',
+    primaryCtaText: 'View Deccan Scrolls',
+    primaryCtaLink: '/paintings',
+    secondaryCtaText: 'Commission Pottery',
+    secondaryCtaLink: '/custom-pottery',
+    artworks: [
+      {
+        id: 'p-007',
+        title: 'Cheriyal Panel: Bonalu Procession',
+        artist: 'Ramesh Naidu',
+        style: 'Cheriyal Cloth Scroll',
+        price: 6800,
+        imageUrl: '/images/p-007.jpg',
+        dimensions: '45 x 90 cm',
+        status: 'available'
+      },
+      {
+        id: 'p-010',
+        title: 'Nirmal-Style Court Musicians',
+        artist: 'Lakshmi Prasad',
+        style: 'Nirmal Gold Wood',
+        price: 5400,
+        imageUrl: '/images/p-010.jpg',
+        dimensions: '30 x 45 cm',
+        status: 'available'
+      }
+    ]
   }
 ];
 
