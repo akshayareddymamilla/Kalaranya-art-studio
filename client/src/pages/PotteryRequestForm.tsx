@@ -25,11 +25,21 @@ export const PotteryRequestForm: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
-  // Helper date boundary: at least 14 days in the future
+  // Helper local date formatter (avoids UTC timezone day-shift bug)
+  const formatLocalDate = (d: Date): string => {
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+
+  const todayStr = formatLocalDate(new Date());
+
+  // Helper date boundary: at least 14 days in the future from today
   const getMinDate = () => {
     const d = new Date();
     d.setDate(d.getDate() + 14);
-    return d.toISOString().split('T')[0];
+    return formatLocalDate(d);
   };
 
   const minDate = getMinDate();
@@ -239,9 +249,12 @@ export const PotteryRequestForm: React.FC = () => {
 
                 {/* Needed By Date */}
                 <div className="space-y-2">
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-studio-charcoal">
-                    4. Needed-By Date
-                  </label>
+                  <div className="flex items-center justify-between">
+                    <label className="block text-xs font-semibold uppercase tracking-wider text-studio-charcoal">
+                      4. Needed-By Date
+                    </label>
+                    <span className="text-[11px] text-studio-muted">Today: {todayStr}</span>
+                  </div>
                   <div className="relative">
                     <Calendar className="w-4 h-4 text-studio-muted absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                     <input
@@ -253,9 +266,10 @@ export const PotteryRequestForm: React.FC = () => {
                       className="w-full pl-9 pr-3 py-2 text-sm rounded-lg border border-studio-border bg-studio-ivory text-studio-charcoal focus:outline-none focus:ring-2 focus:ring-studio-terracotta/20 focus:border-studio-terracotta"
                     />
                   </div>
-                  <p className="text-[11px] text-studio-muted">
-                    Min 14 days lead time (from {minDate})
-                  </p>
+                  <div className="text-[11px] text-studio-muted flex flex-wrap items-center justify-between gap-1">
+                    <span>Requires min 14 days studio curing lead time</span>
+                    <span className="font-semibold text-studio-terracotta">Earliest date: {minDate}</span>
+                  </div>
                 </div>
               </div>
 

@@ -21,17 +21,25 @@ export const WallBookingForm: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
+  // Helper local date formatter (avoids UTC timezone day-shift bug)
+  const formatLocalDate = (d: Date): string => {
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+
   // Helper date boundaries (7 days to 90 days from today)
   const getMinDate = () => {
     const d = new Date();
     d.setDate(d.getDate() + 7);
-    return d.toISOString().split('T')[0];
+    return formatLocalDate(d);
   };
 
   const getMaxDate = () => {
     const d = new Date();
     d.setDate(d.getDate() + 90);
-    return d.toISOString().split('T')[0];
+    return formatLocalDate(d);
   };
 
   const minDate = getMinDate();
