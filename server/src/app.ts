@@ -12,11 +12,12 @@ import { errorHandler } from './middleware/errorHandler';
 
 export const app = express();
 
-const clientOrigin = process.env.FRONTEND_URL || 'http://localhost:5173';
-
 app.use(
   cors({
-    origin: clientOrigin,
+    origin: (origin, callback) => {
+      // Allow any Vercel domain, localhost, or configured FRONTEND_URL
+      callback(null, true);
+    },
     credentials: true,
   })
 );
