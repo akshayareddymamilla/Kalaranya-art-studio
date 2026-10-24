@@ -9,12 +9,14 @@ import { StatusBadge } from '../components/StatusBadge';
 import { LoadingState } from '../components/LoadingState';
 import { EmptyState } from '../components/EmptyState';
 import { ErrorState } from '../components/ErrorState';
+import { ConfirmModal } from '../components/ConfirmModal';
 import {
   Palette,
   Calendar,
   Sparkles,
   Plus,
   Pencil,
+  Trash2,
   Check,
   X,
   ShieldCheck,
@@ -51,7 +53,31 @@ export const AdminDashboard: React.FC = () => {
   const [editDescription, setEditDescription] = useState<string>('');
   const [editPrice, setEditPrice] = useState<number>(0);
 
+  // Delete Painting State
+  const [deletingPainting, setDeletingPainting] = useState<Painting | null>(null);
+
   const [actionLoading, setActionLoading] = useState<boolean>(false);
+
+  const handleDeletePainting = async () => {
+    if (!deletingPainting) return;
+    try {
+      setActionLoading(true);
+      await paintingService.delete(deletingPainting.id);
+      setPaintings((prev) => prev.filter((p) => p.id !== deletingPainting.id));
+      setFeedback({
+        type: 'success',
+        message: `Painting "${deletingPainting.title}" removed from catalogue successfully.`,
+      });
+      setDeletingPainting(null);
+    } catch (err: any) {
+      setFeedback({
+        type: 'error',
+        message: err.message || 'Failed to delete painting.',
+      });
+    } finally {
+      setActionLoading(false);
+    }
+  };
 
   const loadAdminData = async () => {
     try {
@@ -404,22 +430,32 @@ export const AdminDashboard: React.FC = () => {
                           </td>
                           <td className="px-6 py-4 text-right">
                             {isAvailable ? (
-                              <button
-                                onClick={() => {
-                                  setEditingPainting(painting);
-                                  setEditTitle(painting.title);
-                                  setEditArtist(painting.artist);
-                                  setEditDescription(painting.description);
-                                  setEditPrice(painting.price);
-                                }}
-                                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-studio-border text-xs font-medium text-studio-charcoal hover:bg-studio-sand transition-colors"
-                              >
-                                <Pencil className="w-3.5 h-3.5 text-studio-muted" />
-                                Edit Artwork
-                              </button>
+                              <div className="flex items-center justify-end gap-2">
+                                <button
+                                  onClick={() => {
+                                    setEditingPainting(painting);
+                                    setEditTitle(painting.title);
+                                    setEditArtist(painting.artist);
+                                    setEditDescription(painting.description);
+                                    setEditPrice(painting.price);
+                                  }}
+                                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-studio-border text-xs font-medium text-studio-charcoal hover:bg-studio-sand transition-colors"
+                                >
+                                  <Pencil className="w-3.5 h-3.5 text-studio-muted" />
+                                  Edit
+                                </button>
+                                <button
+                                  onClick={() => setDeletingPainting(painting)}
+                                  className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-rose-200 text-xs font-medium text-rose-600 hover:bg-rose-50 transition-colors"
+                                  title="Delete from catalogue"
+                                >
+                                  <Trash2 className="w-3.5 h-3.5" />
+                                  Delete
+                                </button>
+                              </div>
                             ) : (
                               <span
-                                title="Sold paintings cannot be edited according to studio business rules."
+                                title="Sold paintings cannot be edited or deleted as patron orders exist."
                                 className="text-xs text-stone-400 cursor-not-allowed italic"
                               >
                                 Locked (Sold)
@@ -793,6 +829,18 @@ export const AdminDashboard: React.FC = () => {
           </div>
         </div>
       )}
+      {/* Delete Painting Confirmation Modal */}
+      <ConfirmModal
+        isOpen={!!deletingPainting}
+        title="Delete Painting"
+        message={`Are you sure you want to permanently remove "${deletingPainting?.title}" by ${deletingPainting?.artist} from the studio catalogue? This cannot be undone.`}
+        confirmLabel="Delete Masterpiece"
+        cancelLabel="Keep Painting"
+        isDestructive={true}
+        isLoading={actionLoading}
+        onConfirm={handleDeletePainting}
+        onCancel={() => setDeletingPainting(null)}
+      />
     </div>
   );
 };

@@ -27,6 +27,14 @@ router.patch(
   PaintingController.update
 );
 
+// Admin only: delete painting (only while available & unpurchased)
+router.delete(
+  '/:id',
+  authenticate,
+  requireRole(['admin', 'studio']),
+  PaintingController.delete
+);
+
 // Customer only: purchase painting
 router.post(
   '/:id/orders',

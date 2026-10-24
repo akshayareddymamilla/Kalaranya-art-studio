@@ -40,6 +40,19 @@ export class PaintingController {
     }
   }
 
+  static async delete(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+      await PaintingService.deletePainting(id);
+      res.status(200).json({
+        success: true,
+        message: 'Painting removed from gallery collection successfully',
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
   static async purchase(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
       const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;

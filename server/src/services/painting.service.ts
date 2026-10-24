@@ -53,6 +53,25 @@ export class PaintingService {
     });
   }
 
+  static async deletePainting(id: string) {
+    const painting = await prisma.painting.findUnique({
+      where: { id },
+      include: { orders: true },
+    });
+
+    if (!painting) {
+      throw new NotFoundError('Painting not found.');
+    }
+
+    if (painting.status === 'sold' || painting.orders.some((o) => o.status === 'placed')) {
+      throw new BadRequestError('Cannot delete a painting that has been purchased. Active patron orders exist for this masterpiece.');
+    }
+
+    return prisma.painting.delete({
+      where: { id },
+    });
+  }
+
   /**
    * Concurrency-safe purchase execution:
    * 1. Uses an atomic conditional update where status is 'available'

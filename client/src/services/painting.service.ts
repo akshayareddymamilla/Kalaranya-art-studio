@@ -30,6 +30,12 @@ export const paintingService = {
     });
   },
 
+  async delete(id: string): Promise<void> {
+    return request<void>(`/paintings/${id}`, {
+      method: 'DELETE',
+    });
+  },
+
   async purchase(paintingId: string): Promise<Order> {
     return request<Order>(`/paintings/${paintingId}/orders`, {
       method: 'POST',
