@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Palette, AlertCircle } from 'lucide-react';
+import { AlertCircle } from 'lucide-react';
 
 export const RegisterPage: React.FC = () => {
   const { register } = useAuth();
@@ -34,10 +34,12 @@ export const RegisterPage: React.FC = () => {
   return (
     <div className="max-w-md mx-auto px-4 py-16">
       <div className="bg-white rounded-2xl border border-studio-border p-8 shadow-sm space-y-6">
-        <div className="text-center space-y-2">
-          <div className="w-12 h-12 rounded-full bg-studio-terracotta/10 border border-studio-terracotta/20 flex items-center justify-center text-studio-terracotta mx-auto">
-            <Palette className="w-6 h-6" />
-          </div>
+        <div className="text-center space-y-3">
+          <img
+            src="/logo.png"
+            alt="Kalāranya Art Studio"
+            className="h-16 w-auto object-contain mx-auto"
+          />
           <h1 className="font-serif text-2xl font-bold text-studio-charcoal">Create Customer Account</h1>
           <p className="text-xs text-studio-muted">
             Register to acquire paintings, book murals, and commission bespoke pottery.

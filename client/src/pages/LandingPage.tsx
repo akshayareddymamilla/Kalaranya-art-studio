@@ -5,7 +5,7 @@ import { paintingService } from '../services/painting.service';
 import { StatusBadge } from '../components/StatusBadge';
 import { LoadingState } from '../components/LoadingState';
 import { ErrorState } from '../components/ErrorState';
-import { ArrowRight, Palette, Calendar, Sparkles, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Palette, Calendar, Sparkles } from 'lucide-react';
 
 export const LandingPage: React.FC = () => {
   const [featuredPaintings, setFeaturedPaintings] = useState<Painting[]>([]);
@@ -33,19 +33,19 @@ export const LandingPage: React.FC = () => {
       <section className="relative overflow-hidden pt-12 md:pt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-studio-sand border border-studio-border text-xs font-medium text-studio-charcoal">
+            <div className="lg:col-span-7 space-y-7">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-studio-sand border border-studio-border text-xs font-medium tracking-wide text-studio-charcoal">
                 <span className="w-2 h-2 rounded-full bg-studio-terracotta animate-pulse" />
-                Original Contemporary Indian Art
+                Original Contemporary Indian Art Atelier
               </div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-studio-charcoal leading-[1.15]">
-                Timeless art forms handcrafted for the mindful sanctuary.
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-light text-studio-charcoal leading-[1.08] tracking-tight">
+                Timeless art forms <span className="italic font-normal text-studio-terracotta">handcrafted</span> for the mindful sanctuary.
               </h1>
-              <p className="text-base sm:text-lg text-studio-muted leading-relaxed max-w-xl">
+              <p className="text-base sm:text-lg lg:text-xl text-studio-muted leading-relaxed max-w-xl font-light">
                 Kalāranya Studio unites traditional heritage with contemporary living. Each painting is one-of-a-kind, each wall mural architectural, and every custom pottery piece individually thrown and glazed.
               </p>
 
-              <div className="flex flex-wrap items-center gap-4 pt-2">
+              <div className="flex flex-wrap items-center gap-4 pt-3">
                 <Link
                   to="/paintings"
                   className="inline-flex items-center gap-2 px-6 py-3.5 rounded-lg bg-studio-terracotta text-white font-medium hover:bg-studio-terracotta-hover transition-colors shadow-sm"
@@ -65,16 +65,6 @@ export const LandingPage: React.FC = () => {
                 >
                   Custom Pottery
                 </Link>
-              </div>
-
-              {/* Evaluator notice pill */}
-              <div className="pt-4">
-                <div className="inline-flex items-center gap-3 p-3 rounded-lg bg-amber-50/80 border border-amber-200/80 text-xs text-amber-900">
-                  <ShieldCheck className="w-4 h-4 text-amber-700 shrink-0" />
-                  <span>
-                    <strong>Studio Administration (Seed Account):</strong> <span className="font-mono">studio@artstudio.in</span> / <span className="font-mono">Studio@123</span>. Patrons register dynamically via storefront Sign-Up.
-                  </span>
-                </div>
               </div>
             </div>
 

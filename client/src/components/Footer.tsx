@@ -1,5 +1,4 @@
 import React from 'react';
-import { Palette } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
@@ -8,12 +7,11 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-studio-terracotta/10 border border-studio-terracotta/20 flex items-center justify-center text-studio-terracotta">
-                <Palette className="w-4 h-4" />
-              </div>
-              <span className="font-serif text-lg font-bold tracking-tight text-studio-charcoal">
-                KALĀRANYA
-              </span>
+              <img
+                src="/logo.png"
+                alt="Kalāranya Art Studio & Atelier"
+                className="h-12 w-auto object-contain"
+              />
             </div>
             <p className="text-sm text-studio-muted max-w-sm leading-relaxed">
               An independent contemporary studio preserving Indian traditional art forms, offering one-of-a-kind original paintings, architectural wall murals, and artisanal custom glazed pottery.

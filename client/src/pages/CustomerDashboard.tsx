@@ -643,9 +643,11 @@ export const CustomerDashboard: React.FC = () => {
 
               {/* Certificate Header */}
               <div className="text-center space-y-1 mb-6 border-b border-amber-900/20 pb-4">
-                <span className="text-[10px] uppercase tracking-[0.25em] text-studio-muted font-bold block">
-                  KALĀRANYA ART STUDIO & ATELIER
-                </span>
+                <img
+                  src="/logo.png"
+                  alt="Kalāranya Art Studio Logo"
+                  className="h-14 w-auto object-contain mx-auto mb-2"
+                />
                 <h2 className="font-serif text-2xl sm:text-3xl font-bold text-amber-950 tracking-wider">
                   CERTIFICATE OF AUTHENTICITY
                 </h2>

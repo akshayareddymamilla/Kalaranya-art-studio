@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Palette, LogOut, LayoutDashboard, ShieldCheck, Calendar, Sparkles } from 'lucide-react';
+import { LogOut, LayoutDashboard, ShieldCheck } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
   const { user, isAuthenticated, isStudioAdmin, logout } = useAuth();
@@ -17,44 +17,13 @@ export const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Studio Brand */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-full bg-studio-terracotta/10 border border-studio-terracotta/20 flex items-center justify-center text-studio-terracotta group-hover:bg-studio-terracotta group-hover:text-white transition-colors">
-              <Palette className="w-5 h-5" />
-            </div>
-            <div>
-              <span className="font-serif text-xl font-bold tracking-tight text-studio-charcoal block leading-none">
-                KALĀRANYA
-              </span>
-              <span className="text-[10px] tracking-widest uppercase text-studio-muted font-medium">
-                Art Studio & Atelier
-              </span>
-            </div>
+          <Link to="/" className="flex items-center gap-3 group py-1">
+            <img
+              src="/logo.png"
+              alt="Kalāranya Art Studio & Atelier"
+              className="h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            />
           </Link>
-
-          {/* Navigation Links */}
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-studio-charcoal">
-            <Link
-              to="/paintings"
-              className="hover:text-studio-terracotta transition-colors flex items-center gap-1.5"
-            >
-              <Palette className="w-4 h-4 text-studio-muted" />
-              Paintings
-            </Link>
-            <Link
-              to="/book-wall"
-              className="hover:text-studio-terracotta transition-colors flex items-center gap-1.5"
-            >
-              <Calendar className="w-4 h-4 text-studio-muted" />
-              Wall Murals
-            </Link>
-            <Link
-              to="/custom-pottery"
-              className="hover:text-studio-terracotta transition-colors flex items-center gap-1.5"
-            >
-              <Sparkles className="w-4 h-4 text-studio-muted" />
-              Custom Pottery
-            </Link>
-          </nav>
 
           {/* User / Auth State */}
           <div className="flex items-center gap-4">

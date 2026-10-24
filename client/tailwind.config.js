@@ -21,8 +21,8 @@ export default {
         }
       },
       fontFamily: {
-        serif: ['Georgia', 'serif'],
-        sans: ['system-ui', '-apple-system', 'sans-serif'],
+        serif: ['"Cormorant Garamond"', 'Playfair Display', 'Georgia', 'serif'],
+        sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
       }
     },
   },
