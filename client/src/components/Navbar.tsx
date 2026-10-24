@@ -47,9 +47,9 @@ export const Navbar: React.FC = () => {
           {/* Studio Brand */}
           <Link to="/" className="flex items-center gap-3 group py-0.5">
             <img
-              src="/logo.png"
+              src="/logo-horizontal.png"
               alt="Kalāranya Art Studio & Atelier"
-              className="h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              className="h-11 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
           </Link>
 

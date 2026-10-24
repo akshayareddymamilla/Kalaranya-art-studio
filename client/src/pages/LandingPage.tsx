@@ -6,7 +6,7 @@ import { StatusBadge } from '../components/StatusBadge';
 import { LoadingState } from '../components/LoadingState';
 import { ErrorState } from '../components/ErrorState';
 import { TopHero } from '../components/TopHero';
-import { ArrowRight, Palette, Calendar, Sparkles } from 'lucide-react';
+import { ArrowRight, Check } from 'lucide-react';
 
 export const LandingPage: React.FC = () => {
   const [featuredPaintings, setFeaturedPaintings] = useState<Painting[]>([]);
@@ -33,79 +33,191 @@ export const LandingPage: React.FC = () => {
       {/* Editorial In-Situ Top Hero (Matching Reference Design) */}
       <TopHero />
 
-      {/* The 3 Studio Pillars */}
+      {/* The 3 Studio Pillars (Elevated Architectural Editorial Cards) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div>
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-studio-charcoal">Three Disciplines, One Studio</h2>
-            <p className="text-sm sm:text-base text-studio-muted mt-2 font-light">
+          {/* Section Header */}
+          <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+            <div className="flex items-center justify-center gap-3 text-xs tracking-[0.22em] font-medium uppercase text-[#A64A26]">
+              <span className="w-8 h-[1.5px] bg-[#A64A26]" />
+              <span>STUDIO DISCIPLINES</span>
+              <span className="w-8 h-[1.5px] bg-[#A64A26]" />
+            </div>
+            <h2 className="text-3xl sm:text-5xl font-serif font-light text-studio-charcoal tracking-tight">
+              Three Disciplines, <span className="italic font-normal text-studio-terracotta">One Atelier.</span>
+            </h2>
+            <p className="text-sm sm:text-base text-studio-muted font-light leading-relaxed max-w-2xl mx-auto">
               Every creation is governed by strict craftsmanship, transparent pricing, and authenticity guarantees.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Discipline 1 */}
-            <div className="bg-white rounded-xl p-8 border border-studio-border shadow-sm hover:border-studio-terracotta/40 transition-colors flex flex-col justify-between">
-              <div className="space-y-4">
-                <div className="w-12 h-12 rounded-lg bg-amber-50 text-amber-800 flex items-center justify-center">
-                  <Palette className="w-6 h-6" />
+            
+            {/* Discipline 1: Paintings */}
+            <div className="group bg-white rounded-2xl overflow-hidden border border-studio-border shadow-sm hover:shadow-xl hover:border-studio-terracotta/40 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                {/* Visual Header Image */}
+                <div className="relative aspect-[16/10] overflow-hidden bg-studio-sand">
+                  <img
+                    src="/images/p-001.jpg"
+                    alt="One-of-a-Kind Paintings"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+                  <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[10px] font-mono tracking-wider uppercase text-studio-charcoal font-semibold shadow-sm">
+                    100% Original Artwork
+                  </div>
+                  <div className="absolute bottom-3 left-4 text-white">
+                    <span className="text-[10px] uppercase tracking-wider text-amber-300 font-medium block">Singular Acquisition</span>
+                    <h4 className="font-serif text-lg font-semibold">Fine Art Paintings</h4>
+                  </div>
                 </div>
-                <h3 className="text-xl font-serif font-semibold text-studio-charcoal">One-of-a-Kind Paintings</h3>
-                <p className="text-sm text-studio-muted leading-relaxed">
-                  Authentic Madhubani, Warli, Tanjore, Pattachitra, and Gond paintings. Each piece is unique and can be acquired only once.
-                </p>
+
+                {/* Body Content */}
+                <div className="p-6 sm:p-7 space-y-4">
+                  <p className="text-sm text-studio-muted leading-relaxed font-light">
+                    Authentic Madhubani, Warli, Tanjore, Pattachitra, and Gond paintings. Each piece is unique and can be acquired only once.
+                  </p>
+
+                  <div className="space-y-2 pt-3 border-t border-studio-border/60">
+                    <div className="flex items-center gap-2.5 text-xs text-studio-charcoal">
+                      <Check className="w-3.5 h-3.5 text-studio-terracotta shrink-0" />
+                      <span>Singular acquisition (acquired only once)</span>
+                    </div>
+                    <div className="flex items-center gap-2.5 text-xs text-studio-charcoal">
+                      <Check className="w-3.5 h-3.5 text-studio-terracotta shrink-0" />
+                      <span>Physical Certificate of Authenticity</span>
+                    </div>
+                    <div className="flex items-center gap-2.5 text-xs text-studio-charcoal">
+                      <Check className="w-3.5 h-3.5 text-studio-terracotta shrink-0" />
+                      <span>Natural pigments on tussar & handmade paper</span>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="pt-6 border-t border-studio-border/60 mt-6">
+
+              {/* Bottom Action */}
+              <div className="px-6 sm:px-7 pb-6 pt-2">
                 <Link
                   to="/paintings"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-studio-terracotta hover:underline"
+                  className="w-full py-3 px-4 rounded-lg bg-studio-sand/80 border border-studio-border text-xs font-semibold text-studio-charcoal group-hover:bg-studio-terracotta group-hover:text-white group-hover:border-transparent transition-all duration-200 flex items-center justify-center gap-2 shadow-sm"
                 >
-                  Browse Catalogue <ArrowRight className="w-3.5 h-3.5" />
+                  Browse Catalogue
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             </div>
 
-            {/* Discipline 2 */}
-            <div className="bg-white rounded-xl p-8 border border-studio-border shadow-sm hover:border-studio-terracotta/40 transition-colors flex flex-col justify-between">
-              <div className="space-y-4">
-                <div className="w-12 h-12 rounded-lg bg-emerald-50 text-emerald-800 flex items-center justify-center">
-                  <Calendar className="w-6 h-6" />
+            {/* Discipline 2: Wall Murals */}
+            <div className="group bg-white rounded-2xl overflow-hidden border border-studio-border shadow-sm hover:shadow-xl hover:border-studio-terracotta/40 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                {/* Visual Header Image */}
+                <div className="relative aspect-[16/10] overflow-hidden bg-studio-sand">
+                  <img
+                    src="/images/hero-room-3.jpg"
+                    alt="Architectural Wall Murals"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+                  <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[10px] font-mono tracking-wider uppercase text-studio-charcoal font-semibold shadow-sm">
+                    Flat ₹150 / sq ft
+                  </div>
+                  <div className="absolute bottom-3 left-4 text-white">
+                    <span className="text-[10px] uppercase tracking-wider text-amber-300 font-medium block">On-Site Artistry</span>
+                    <h4 className="font-serif text-lg font-semibold">Architectural Murals</h4>
+                  </div>
                 </div>
-                <h3 className="text-xl font-serif font-semibold text-studio-charcoal">Architectural Murals</h3>
-                <p className="text-sm text-studio-muted leading-relaxed">
-                  Custom hand-painted murals for residential and commercial walls. Transparent flat rate of ₹150 / sq ft, with scheduled booking 7 to 90 days out.
-                </p>
+
+                {/* Body Content */}
+                <div className="p-6 sm:p-7 space-y-4">
+                  <p className="text-sm text-studio-muted leading-relaxed font-light">
+                    Custom hand-painted murals for residential and commercial walls. Transparent flat rate of ₹150 / sq ft, with scheduled booking 7 to 90 days out.
+                  </p>
+
+                  <div className="space-y-2 pt-3 border-t border-studio-border/60">
+                    <div className="flex items-center gap-2.5 text-xs text-studio-charcoal">
+                      <Check className="w-3.5 h-3.5 text-studio-terracotta shrink-0" />
+                      <span>Transparent flat rate of ₹150 / sq ft</span>
+                    </div>
+                    <div className="flex items-center gap-2.5 text-xs text-studio-charcoal">
+                      <Check className="w-3.5 h-3.5 text-studio-terracotta shrink-0" />
+                      <span>Advance calendar booking (7 to 90 days)</span>
+                    </div>
+                    <div className="flex items-center gap-2.5 text-xs text-studio-charcoal">
+                      <Check className="w-3.5 h-3.5 text-studio-terracotta shrink-0" />
+                      <span>Living room, courtyard & feature walls</span>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="pt-6 border-t border-studio-border/60 mt-6">
+
+              {/* Bottom Action */}
+              <div className="px-6 sm:px-7 pb-6 pt-2">
                 <Link
                   to="/book-wall"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-studio-terracotta hover:underline"
+                  className="w-full py-3 px-4 rounded-lg bg-studio-sand/80 border border-studio-border text-xs font-semibold text-studio-charcoal group-hover:bg-studio-terracotta group-hover:text-white group-hover:border-transparent transition-all duration-200 flex items-center justify-center gap-2 shadow-sm"
                 >
-                  Reserve a Date <ArrowRight className="w-3.5 h-3.5" />
+                  Reserve a Date
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             </div>
 
-            {/* Discipline 3 */}
-            <div className="bg-white rounded-xl p-8 border border-studio-border shadow-sm hover:border-studio-terracotta/40 transition-colors flex flex-col justify-between">
-              <div className="space-y-4">
-                <div className="w-12 h-12 rounded-lg bg-orange-50 text-orange-800 flex items-center justify-center">
-                  <Sparkles className="w-6 h-6" />
+            {/* Discipline 3: Pottery */}
+            <div className="group bg-white rounded-2xl overflow-hidden border border-studio-border shadow-sm hover:shadow-xl hover:border-studio-terracotta/40 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                {/* Visual Header Image */}
+                <div className="relative aspect-[16/10] overflow-hidden bg-studio-sand">
+                  <img
+                    src="/images/hero-room-2.jpg"
+                    alt="Custom Glazed Pottery"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+                  <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[10px] font-mono tracking-wider uppercase text-studio-charcoal font-semibold shadow-sm">
+                    6 Mineral Glazes
+                  </div>
+                  <div className="absolute bottom-3 left-4 text-white">
+                    <span className="text-[10px] uppercase tracking-wider text-amber-300 font-medium block">Heritage Craft</span>
+                    <h4 className="font-serif text-lg font-semibold">Custom Glazed Pottery</h4>
+                  </div>
                 </div>
-                <h3 className="text-xl font-serif font-semibold text-studio-charcoal">Custom Glazed Pottery</h3>
-                <p className="text-sm text-studio-muted leading-relaxed">
-                  Bespoke terracotta kulhads, surahis, matkas, and planters dipped in traditional glazes like Kumkum Red and Haldi Yellow.
-                </p>
+
+                {/* Body Content */}
+                <div className="p-6 sm:p-7 space-y-4">
+                  <p className="text-sm text-studio-muted leading-relaxed font-light">
+                    Bespoke terracotta kulhads, surahis, matkas, and planters dipped in traditional glazes like Kumkum Red and Haldi Yellow.
+                  </p>
+
+                  <div className="space-y-2 pt-3 border-t border-studio-border/60">
+                    <div className="flex items-center gap-2.5 text-xs text-studio-charcoal">
+                      <Check className="w-3.5 h-3.5 text-studio-terracotta shrink-0" />
+                      <span>5 heritage terracotta vessel shapes</span>
+                    </div>
+                    <div className="flex items-center gap-2.5 text-xs text-studio-charcoal">
+                      <Check className="w-3.5 h-3.5 text-studio-terracotta shrink-0" />
+                      <span>Kumkum Red, Haldi Yellow & Neel glazes</span>
+                    </div>
+                    <div className="flex items-center gap-2.5 text-xs text-studio-charcoal">
+                      <Check className="w-3.5 h-3.5 text-studio-terracotta shrink-0" />
+                      <span>Direct patron-to-artisan request tracking</span>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="pt-6 border-t border-studio-border/60 mt-6">
+
+              {/* Bottom Action */}
+              <div className="px-6 sm:px-7 pb-6 pt-2">
                 <Link
                   to="/custom-pottery"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-studio-terracotta hover:underline"
+                  className="w-full py-3 px-4 rounded-lg bg-studio-sand/80 border border-studio-border text-xs font-semibold text-studio-charcoal group-hover:bg-studio-terracotta group-hover:text-white group-hover:border-transparent transition-all duration-200 flex items-center justify-center gap-2 shadow-sm"
                 >
-                  Commission Pottery <ArrowRight className="w-3.5 h-3.5" />
+                  Commission Pottery
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             </div>
+
           </div>
         </div>
       </section>
