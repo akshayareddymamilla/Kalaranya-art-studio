@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { ShieldCheck, AlertCircle, ArrowLeft } from 'lucide-react';
+import { AlertCircle, ArrowLeft } from 'lucide-react';
 
 export const LoginPage: React.FC = () => {
   const { login } = useAuth();
@@ -35,12 +35,6 @@ export const LoginPage: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
-
-  const handleFillDemo = (demoEmail: string, demoPass: string) => {
-    setEmail(demoEmail);
-    setPassword(demoPass);
-    setError(null);
   };
 
   return (
@@ -122,24 +116,6 @@ export const LoginPage: React.FC = () => {
             Sign In
           </button>
         </form>
-
-        {/* Studio Admin Seed Account Helper */}
-        <div className="pt-4 border-t border-studio-border/70 space-y-2">
-          <button
-            type="button"
-            onClick={() => handleFillDemo('studio@artstudio.in', 'Studio@123')}
-            className="w-full p-2.5 rounded-lg border border-amber-200 bg-amber-50/70 hover:bg-amber-100/70 transition-colors text-left flex items-center justify-between text-amber-900"
-          >
-            <div className="flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-amber-700 shrink-0" />
-              <div>
-                <span className="text-xs font-bold block leading-none">Studio Administrator (Seed Account)</span>
-                <span className="text-[10px] text-amber-800">studio@artstudio.in</span>
-              </div>
-            </div>
-            <span className="text-[10px] uppercase font-semibold text-amber-800">Fill Credentials</span>
-          </button>
-        </div>
 
         <div className="text-center pt-2 text-xs text-studio-muted">
           New to the atelier?{' '}
