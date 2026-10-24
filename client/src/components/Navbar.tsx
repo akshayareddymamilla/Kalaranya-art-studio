@@ -3,6 +3,16 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { LogOut, LayoutDashboard, ShieldCheck } from 'lucide-react';
 
+const TICKER_ITEMS = [
+  'EACH PAINTING 100% ORIGINAL & ONE-OF-A-KIND',
+  'HAND-FINISHED & ARCHIVALLY FRAMED IN BENGALURU',
+  'CERTIFICATE OF AUTHENTICITY WITH EVERY MASTERPIECE',
+  'ARCHITECTURAL WALL MURALS @ FLAT ₹150 / SQ FT',
+  'BESPOKE GLAZED TERRACOTTA POTTERY',
+  'PAN-INDIA INSURED ART COURIER',
+  'PAYMENT ON DELIVERY AVAILABLE FOR VERIFIED ORDERS'
+];
+
 export const Navbar: React.FC = () => {
   const { user, isAuthenticated, isStudioAdmin, logout } = useAuth();
   const navigate = useNavigate();
@@ -13,9 +23,27 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-studio-ivory/95 backdrop-blur-md border-b border-studio-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+    <header className="sticky top-0 z-40">
+      {/* Top Announcement Marquee Bar */}
+      <div className="bg-[#191715] text-stone-300 border-b border-stone-800/80 overflow-hidden py-1.5 select-none shadow-inner">
+        <div className="animate-marquee whitespace-nowrap text-[10.5px] font-medium tracking-widest uppercase text-stone-200">
+          {[0, 1].map((copyIndex) => (
+            <div key={copyIndex} className="flex items-center shrink-0">
+              {TICKER_ITEMS.map((item, idx) => (
+                <span key={idx} className="flex items-center">
+                  <span className="text-amber-400 mx-3.5 text-xs leading-none">•</span>
+                  <span>{item}</span>
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Main Navbar */}
+      <div className="bg-studio-ivory/95 backdrop-blur-md border-b border-studio-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
           {/* Studio Brand */}
           <Link to="/" className="flex items-center gap-3 group py-0.5">
             <img
@@ -78,6 +106,7 @@ export const Navbar: React.FC = () => {
             )}
           </div>
         </div>
+      </div>
       </div>
     </header>
   );
