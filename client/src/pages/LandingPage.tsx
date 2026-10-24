@@ -114,7 +114,7 @@ export const LandingPage: React.FC = () => {
                 {/* Visual Header Image */}
                 <div className="relative aspect-[16/10] overflow-hidden bg-studio-sand">
                   <img
-                    src="/images/hero-room-3.jpg"
+                    src="/images/discipline-mural.jpg"
                     alt="Architectural Wall Murals"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
@@ -169,7 +169,7 @@ export const LandingPage: React.FC = () => {
                 {/* Visual Header Image */}
                 <div className="relative aspect-[16/10] overflow-hidden bg-studio-sand">
                   <img
-                    src="/images/hero-room-2.jpg"
+                    src="/images/discipline-pottery.jpg"
                     alt="Custom Glazed Pottery"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
