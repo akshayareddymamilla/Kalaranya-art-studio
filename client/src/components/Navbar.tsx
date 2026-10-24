@@ -13,39 +13,17 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-studio-ivory/90 backdrop-blur-md border-b border-studio-border">
+    <header className="sticky top-0 z-40 bg-studio-ivory/95 backdrop-blur-md border-b border-studio-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16">
           {/* Studio Brand */}
-          <Link to="/" className="flex items-center gap-3 group py-1">
+          <Link to="/" className="flex items-center gap-3 group py-0.5">
             <img
               src="/logo.png"
               alt="Kalāranya Art Studio & Atelier"
-              className="h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              className="h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
           </Link>
-
-          {/* Refined Atelier Navigation */}
-          <nav className="hidden md:flex items-center gap-10 text-[13px] tracking-wider uppercase font-medium text-studio-charcoal/80">
-            <Link
-              to="/paintings"
-              className="hover:text-studio-terracotta transition-colors duration-200"
-            >
-              Paintings
-            </Link>
-            <Link
-              to="/book-wall"
-              className="hover:text-studio-terracotta transition-colors duration-200"
-            >
-              Wall Murals
-            </Link>
-            <Link
-              to="/custom-pottery"
-              className="hover:text-studio-terracotta transition-colors duration-200"
-            >
-              Custom Pottery
-            </Link>
-          </nav>
 
           {/* User / Auth State */}
           <div className="flex items-center gap-4">

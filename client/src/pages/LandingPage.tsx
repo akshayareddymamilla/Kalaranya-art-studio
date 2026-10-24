@@ -28,13 +28,13 @@ export const LandingPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="space-y-16 pb-20">
+    <div className="space-y-16 pb-16">
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-6 md:pt-10">
+      <section className="relative overflow-hidden pt-4 md:pt-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-7 space-y-7">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-studio-sand border border-studio-border text-xs font-medium tracking-wide text-studio-charcoal">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div className="lg:col-span-7 space-y-5">
+              <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-studio-sand border border-studio-border text-xs font-medium tracking-wide text-studio-charcoal">
                 <span className="w-2 h-2 rounded-full bg-studio-terracotta animate-pulse" />
                 Original Contemporary Indian Art Atelier
               </div>
@@ -45,23 +45,23 @@ export const LandingPage: React.FC = () => {
                 Kalāranya Studio unites traditional heritage with contemporary living. Each painting is one-of-a-kind, each wall mural architectural, and every custom pottery piece individually thrown and glazed.
               </p>
 
-              <div className="flex flex-wrap items-center gap-4 pt-3">
+              <div className="flex flex-wrap items-center gap-3.5 pt-1">
                 <Link
                   to="/paintings"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-lg bg-studio-terracotta text-white font-medium hover:bg-studio-terracotta-hover transition-colors shadow-sm"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-studio-terracotta text-white font-medium hover:bg-studio-terracotta-hover transition-colors shadow-sm text-sm"
                 >
                   Explore Paintings
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
                   to="/book-wall"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-lg bg-white border border-studio-border text-studio-charcoal font-medium hover:bg-studio-sand transition-colors shadow-sm"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white border border-studio-border text-studio-charcoal font-medium hover:bg-studio-sand transition-colors shadow-sm text-sm"
                 >
                   Book Wall Mural
                 </Link>
                 <Link
                   to="/custom-pottery"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-lg bg-white border border-studio-border text-studio-charcoal font-medium hover:bg-studio-sand transition-colors shadow-sm"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white border border-studio-border text-studio-charcoal font-medium hover:bg-studio-sand transition-colors shadow-sm text-sm"
                 >
                   Custom Pottery
                 </Link>
