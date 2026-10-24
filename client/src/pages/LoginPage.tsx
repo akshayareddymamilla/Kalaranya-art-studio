@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { ShieldCheck, AlertCircle } from 'lucide-react';
+import { ShieldCheck, AlertCircle, ArrowLeft } from 'lucide-react';
 
 export const LoginPage: React.FC = () => {
   const { login } = useAuth();
@@ -44,7 +44,24 @@ export const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto px-4 py-16">
+    <div className="max-w-md mx-auto px-4 py-12">
+      {/* Return Navigation */}
+      <div className="mb-6 flex items-center justify-between">
+        <Link
+          to={redirectPath || "/"}
+          className="inline-flex items-center gap-2 text-xs font-medium text-studio-muted hover:text-studio-terracotta transition-colors py-1.5 px-3 rounded-lg bg-white border border-studio-border shadow-sm hover:border-studio-terracotta/40"
+        >
+          <ArrowLeft className="w-3.5 h-3.5" />
+          <span>{redirectPath ? 'Back to Artwork' : 'Back to Home / Atelier'}</span>
+        </Link>
+        <Link
+          to="/"
+          className="text-xs font-medium text-studio-muted hover:text-studio-terracotta transition-colors"
+        >
+          Home
+        </Link>
+      </div>
+
       <div className="bg-white rounded-2xl border border-studio-border p-8 shadow-sm space-y-6">
         <div className="text-center space-y-3">
           <img
