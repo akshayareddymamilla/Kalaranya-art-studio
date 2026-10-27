@@ -10,9 +10,9 @@ Authorization is enforced entirely on the server through two middlewares: `authe
 
 ## 2. Which database did you choose, and why?
 
-We chose **SQLite** managed via **Prisma ORM**. 
+I chose **SQLite** managed via **Prisma ORM**. 
 
-We selected SQLite because a reliable, self-contained system with zero setup friction delivers superior robustness. SQLite allows zero-dependency, turnkey execution on any clean machine without requiring Docker containers, external database cluster credentials, network latency, or database daemon configurations. At the same time, SQLite provides full ACID transactions, relational foreign keys, cascade deletes, and native support for partial unique indexes (`CREATE UNIQUE INDEX ... WHERE status IN (...)`). This gives us enterprise-grade relational integrity with zero operational overhead. Switching to PostgreSQL in production would simply involve changing `provider = "postgresql"` in `prisma/schema.prisma` without rewriting application code.
+I selected SQLite because a reliable, self-contained system with zero setup friction delivers superior robustness. SQLite allows zero-dependency, turnkey execution on any clean machine without requiring Docker containers, external database cluster credentials, network latency, or database daemon configurations. At the same time, SQLite provides full ACID transactions, relational foreign keys, cascade deletes, and native support for partial unique indexes (`CREATE UNIQUE INDEX ... WHERE status IN (...)`). This gives us enterprise-grade relational integrity with zero operational overhead. Switching to PostgreSQL in production would simply involve changing `provider = "postgresql"` in `prisma/schema.prisma` without rewriting application code.
 
 ---
 
